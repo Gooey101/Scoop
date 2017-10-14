@@ -1,4 +1,4 @@
-package com.example.cleeg.scoopreporter;
+package com.example.cleeg.scoopreporter.models;
 
 public class Report {
 
