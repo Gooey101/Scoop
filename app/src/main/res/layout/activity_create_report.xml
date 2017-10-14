@@ -6,6 +6,28 @@
     android:orientation="vertical"
     tools:context="com.example.cleeg.scoopreporter.CreateReportActivity">
 
+    <Button
+        android:id="@+id/browse_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Browse image to upload" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:id="@+id/txtImageName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Image name" />
+
+    <Button
+        android:id="@+id/upload_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload image" />
 
 </LinearLayout>
