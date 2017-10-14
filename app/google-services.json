@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "296906820697",
+    "firebase_url": "https://scoop-36717.firebaseio.com",
+    "project_id": "scoop-36717",
+    "storage_bucket": "scoop-36717.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296906820697:android:1e8e135ce6b005d1",
+        "android_client_info": {
+          "package_name": "com.example.cleeg.scoopreporter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296906820697-jtsviiegsd8ik6135qgkmuleqsmeb3fh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cleeg.scoopreporter",
+            "certificate_hash": "e0a8593dc6637d7bb07afed5bad5b2b35eb93390"
+          }
+        },
+        {
+          "client_id": "296906820697-s1jqmq7ilek0l1rqv3og5jbf8l1ochmi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOBj-0UCJG9X-sytw7Wa9ClL8lEOGxEQQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296906820697-s1jqmq7ilek0l1rqv3og5jbf8l1ochmi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
