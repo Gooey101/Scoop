@@ -3,16 +3,13 @@ package com.example.cleeg.scoopreporter;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -30,10 +27,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 
 import static android.R.attr.path;
 
@@ -47,7 +41,7 @@ public class CreateReportActivity extends AppCompatActivity {
     private EditText txtImgName;
     private Uri imgUri;
 
-    private static final String STORAGE_PATH = "image/";
+    private static final String STORAGE_PATH = "images/";
     private static final String DATABASE_PATH = "images";
 
     @Override
@@ -132,8 +126,6 @@ public class CreateReportActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imgUri);
                 imageView.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
