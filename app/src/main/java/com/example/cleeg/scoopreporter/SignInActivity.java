@@ -131,7 +131,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void writeNewUser(String userId, String name, String email) {
-        Reporter reporter = new Reporter(0, name, email);
+        Reporter reporter = new Reporter(0, name, email, 0);
 
         mDatabaseReference.child("reporters").child(userId).setValue(reporter);
     }
