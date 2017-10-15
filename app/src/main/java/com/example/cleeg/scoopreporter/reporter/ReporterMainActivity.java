@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.cleeg.scoopreporter.BaseActivity;
 import com.example.cleeg.scoopreporter.R;
@@ -26,17 +27,36 @@ public class ReporterMainActivity extends BaseActivity {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
 
+    private String mUsername;
+    private String mCred;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reporter_main);
 
+        final TextView username = (TextView) findViewById(R.id.display_username);
+        final TextView cred = (TextView) findViewById(R.id.display_cred_score);
+
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("reporters");
-        mDatabaseReference.child(getUid()).addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child(getUid()).child("username").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Reporter reporter = dataSnapshot.getValue(Reporter.class);
-                Log.d(TAG, "cred: " + reporter.getCred());
+                mUsername = dataSnapshot.getValue(String.class);
+                username.setText(mUsername);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "Failed to read value.", databaseError.toException());
+            }
+        });
+
+        mDatabaseReference.child(getUid()).child("cred").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mCred = dataSnapshot.getValue(Integer.class).toString();
+                cred.setText(mCred);
             }
 
             @Override

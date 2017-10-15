@@ -7,12 +7,12 @@
     tools:context="com.example.cleeg.scoopreporter.reporter.ReporterMainActivity">
 
     <TextView
-        android:id="@+id/display_name"
+        android:id="@+id/display_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="18sp"
-        tools:text="Christopher Gu" />
+        tools:text="clg2n4" />
 
     <TextView
         android:id="@+id/display_cred_score"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="20sp"
-        tools:text="CREDS" />
+        android:text="CREDS" />
 
     <Button
         android:id="@+id/button_create_report"
