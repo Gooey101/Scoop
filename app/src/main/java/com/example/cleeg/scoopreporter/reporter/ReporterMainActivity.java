@@ -27,18 +27,15 @@ public class ReporterMainActivity extends BaseActivity {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
 
-    private String mUsername;
-    private String mCred;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reporter_main);
 
+        /*
         final TextView username = (TextView) findViewById(R.id.display_username);
         final TextView cred = (TextView) findViewById(R.id.display_cred_score);
 
-        /*
         // Get username and cred to display in TextViews
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         mDatabaseReference.child("reporters").child(getUid()).addValueEventListener(new ValueEventListener() {
@@ -56,6 +53,7 @@ public class ReporterMainActivity extends BaseActivity {
             }
         });
         */
+
 
         Button createReportButton = (Button) findViewById(R.id.button_create_report);
         createReportButton.setOnClickListener(new View.OnClickListener() {

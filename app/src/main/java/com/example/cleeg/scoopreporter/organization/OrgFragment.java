@@ -80,7 +80,7 @@ public class OrgFragment extends Fragment {
                     }
                 });
 
-                // Bind ExecutiveOrder to ViewHolder
+                // Bind Report to ViewHolder
                 viewHolder.bindToItem(model);
             }
         };
