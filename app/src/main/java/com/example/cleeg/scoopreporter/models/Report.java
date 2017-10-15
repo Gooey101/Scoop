@@ -1,5 +1,12 @@
 package com.example.cleeg.scoopreporter.models;
 
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@IgnoreExtraProperties
 public class Report {
 
     private String mTitle;
@@ -35,4 +42,18 @@ public class Report {
     public ImageUpload getImageUpload() { return mImageUpload; }
     public String getReporterKey() { return mReporterKey; }
     public String getOrganization() { return mOrganization; }
+
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("title", mTitle);
+        result.put("info", mInfo);
+        result.put("milliseconds", mMilliseconds);
+        result.put("imageUpload", mImageUpload);
+        result.put("reporterKey", mReporterKey);
+        result.put("organization", mOrganization);
+        result.put("decision", mDecision);
+        return result;
+    }
 }

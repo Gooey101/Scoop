@@ -32,6 +32,8 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import static android.R.attr.data;
@@ -44,7 +46,6 @@ public class CreateReportActivity extends BaseActivity {
 
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef1;
-    private DatabaseReference mDatabaseRef2;
 
     private String title;
     private String info;
@@ -64,9 +65,7 @@ public class CreateReportActivity extends BaseActivity {
 
         // Initialize Firebase variables
         mStorageRef = FirebaseStorage.getInstance().getReference();
-        mDatabaseRef1 = FirebaseDatabase.getInstance().getReference("reporters").child(getUid())
-                .child("reports");
-        mDatabaseRef2 = FirebaseDatabase.getInstance().getReference("organizations");
+        mDatabaseRef1 = FirebaseDatabase.getInstance().getReference();
 
         // Initialize views & buttons
         final EditText titleField = (EditText) findViewById(R.id.field_title);
@@ -97,17 +96,23 @@ public class CreateReportActivity extends BaseActivity {
                 String decision = "undecided";
                 Report report = new Report(title, info, milliseconds, imageUpload, reporterKey,
                         organization, decision);
-                mDatabaseRef1.push().setValue(report);
+
+
+                // Create new post at /reporters/$userid/reports and /organizations/$username/reports
+                String key = mDatabaseRef1.child("reporters").child(getUid()).child("reports").push().getKey();
+                Map<String, Object> reportValues = report.toMap();
+                Map<String, Object> childUpdates = new HashMap<>();
+                childUpdates.put("/reporters/" + getUid() + "/reports/" + key, reportValues);
 
                 // Send data to the specific organization
                 if (Objects.equals(organization, "ap")) {
-                    mDatabaseRef2.child("ap").child("reports").setValue(report);
+                    childUpdates.put("/organizations/ap/reports/" + key, reportValues);
                 } else if (Objects.equals(organization, "bbc")) {
-                    mDatabaseRef2.child("bbc").child("reports").setValue(report);
+                    /childUpdates.put("/organizations/bbc/reports/" + key, reportValues);
                 } else if (Objects.equals(organization, "npr")) {
-                    mDatabaseRef2.child("npr").child("reports").setValue(report);
+                    childUpdates.put("/organizations/npr/reports/" + key, reportValues);
                 }
-
+                mDatabaseRef1.updateChildren(childUpdates);
                 finish();
             }
         });
