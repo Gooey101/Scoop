@@ -88,7 +88,9 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
                 hideProgressDialog();
 
                 if (task.isSuccessful()) {
-                    onAuthSuccess(task.getResult().getUser());
+                    // Go to ReporterMainActivity
+                    startActivity(new Intent(SignInActivity.this, ReporterMainActivity.class));
+                    finish();
                 } else {
                     Toast.makeText(SignInActivity.this, "Sign In Failed", Toast.LENGTH_SHORT).show();
                 }
