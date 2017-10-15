@@ -81,8 +81,9 @@ public class CreateReportActivity extends BaseActivity {
                 info = infoField.getText().toString();
                 reporterKey = getUid();
                 milliseconds = System.currentTimeMillis();
+                String decision = "undecided";
                 Report report = new Report(title, info, milliseconds, imageUpload, reporterKey,
-                        organization);
+                        organization, decision);
                 mDatabaseRef.push().setValue(report);
                 finish();
             }

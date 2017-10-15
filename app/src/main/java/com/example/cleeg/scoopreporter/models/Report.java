@@ -14,17 +14,19 @@ public class Report {
     private ImageUpload mImageUpload;
     private String mReporterKey;
     private String mOrganization;
+    private String mDecision;
 
     public Report() {}
 
     public Report(String title, String info, Long milliseconds, ImageUpload imageUpload,
-                  String reporterKey, String organization) {
+                  String reporterKey, String organization, String decision) {
         mTitle = title;
         mInfo = info;
         mMilliseconds = milliseconds;
         mImageUpload = imageUpload;
         mReporterKey = reporterKey;
         mOrganization = organization;
+        mDecision = decision;
     }
 
     public String getTitle() { return mTitle; }
