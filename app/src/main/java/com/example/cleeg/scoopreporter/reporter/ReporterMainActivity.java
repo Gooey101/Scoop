@@ -38,6 +38,7 @@ public class ReporterMainActivity extends BaseActivity {
         final TextView username = (TextView) findViewById(R.id.display_username);
         final TextView cred = (TextView) findViewById(R.id.display_cred_score);
 
+        // Get username and display in TextView
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("reporters");
         mDatabaseReference.child(getUid()).child("username").addValueEventListener(new ValueEventListener() {
             @Override
@@ -52,6 +53,7 @@ public class ReporterMainActivity extends BaseActivity {
             }
         });
 
+        // Get CRED and display in TextView
         mDatabaseReference.child(getUid()).child("cred").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

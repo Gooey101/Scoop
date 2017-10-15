@@ -67,7 +67,16 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
         // Check auth on Activity start
         if (mFirebaseAuth.getCurrentUser() != null) {
-            onAuthSuccess(mFirebaseAuth.getCurrentUser());
+            String domain = domainFromEmail(mFirebaseAuth.getCurrentUser().getEmail());
+            if (domain.equals("scoop.com")) {
+                // Go to OrgMainActivity
+                startActivity(new Intent(SignInActivity.this, OrgMainActivity.class));
+                finish();
+            } else {
+                // Go to ReporterMainActivity
+                startActivity(new Intent(SignInActivity.this, ReporterMainActivity.class));
+                finish();
+            }
         }
     }
 

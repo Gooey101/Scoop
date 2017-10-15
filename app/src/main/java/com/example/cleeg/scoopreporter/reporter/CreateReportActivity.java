@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -21,12 +22,20 @@ import com.example.cleeg.scoopreporter.models.ImageUpload;
 import com.example.cleeg.scoopreporter.models.Report;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.Objects;
+
+import static android.R.attr.data;
+import static android.R.attr.key;
 
 public class CreateReportActivity extends BaseActivity {
 
@@ -34,7 +43,8 @@ public class CreateReportActivity extends BaseActivity {
     private static final int REQUEST_CODE = 1234;
 
     private StorageReference mStorageRef;
-    private DatabaseReference mDatabaseRef;
+    private DatabaseReference mDatabaseRef1;
+    private DatabaseReference mDatabaseRef2;
 
     private String title;
     private String info;
@@ -54,8 +64,9 @@ public class CreateReportActivity extends BaseActivity {
 
         // Initialize Firebase variables
         mStorageRef = FirebaseStorage.getInstance().getReference();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("reporters").child(getUid())
+        mDatabaseRef1 = FirebaseDatabase.getInstance().getReference("reporters").child(getUid())
                 .child("reports");
+        mDatabaseRef2 = FirebaseDatabase.getInstance().getReference("organizations");
 
         // Initialize views & buttons
         final EditText titleField = (EditText) findViewById(R.id.field_title);
@@ -86,7 +97,17 @@ public class CreateReportActivity extends BaseActivity {
                 String decision = "undecided";
                 Report report = new Report(title, info, milliseconds, imageUpload, reporterKey,
                         organization, decision);
-                mDatabaseRef.push().setValue(report);
+                mDatabaseRef1.push().setValue(report);
+
+                // Send data to the specific organization
+                if (Objects.equals(organization, "ap")) {
+                    mDatabaseRef2.child("ap").child("reports").setValue(report);
+                } else if (Objects.equals(organization, "bbc")) {
+                    mDatabaseRef2.child("bbc").child("reports").setValue(report);
+                } else if (Objects.equals(organization, "npr")) {
+                    mDatabaseRef2.child("npr").child("reports").setValue(report);
+                }
+
                 finish();
             }
         });

@@ -4,18 +4,15 @@ public class Organization {
 
     private String mEmail;
     private String mName;
-    private String mUsername;
 
     public Organization() {}
 
-    public Organization(String email, String name, String username) {
+    public Organization(String email, String name) {
         mEmail = email;
         mName = name;
-        mUsername = username;
     }
 
     public String getEmail(){ return mEmail; }
     public String getName() { return mName; }
-    public String getUsername() { return mUsername; }
 
 }
