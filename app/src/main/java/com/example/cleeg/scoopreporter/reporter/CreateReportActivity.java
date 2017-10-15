@@ -106,11 +106,11 @@ public class CreateReportActivity extends BaseActivity {
 
                 // Send data to the specific organization
                 if (Objects.equals(organization, "ap"))
-                    childUpdates.put("/organizations/ap/reports/" + key, reportValues);
+                    childUpdates.put("/organizations/" + "-KwUnjXTT5pHFv9Ubwh-" + "/reports/" + key, reportValues);
                 if (Objects.equals(organization, "bbc"))
-                    childUpdates.put("/organizations/bbc/reports/" + key, reportValues);
+                    childUpdates.put("/organizations/" + "-KwUnydliazOrpLl_-IK" + "/reports/" + key, reportValues);
                 if (Objects.equals(organization, "npr"))
-                    childUpdates.put("/organizations/npr/reports/" + key, reportValues);
+                    childUpdates.put("/organizations/" + "-KwUnrm-E9tLH1-vuOiw" + "/reports/" + key, reportValues);
                 mDatabaseRef1.updateChildren(childUpdates);
                 finish();
             }

@@ -38,13 +38,16 @@ public class ReporterMainActivity extends BaseActivity {
         final TextView username = (TextView) findViewById(R.id.display_username);
         final TextView cred = (TextView) findViewById(R.id.display_cred_score);
 
-        // Get username and display in TextView
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference("reporters");
-        mDatabaseReference.child(getUid()).child("username").addValueEventListener(new ValueEventListener() {
+        /*
+        // Get username and cred to display in TextViews
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+        mDatabaseReference.child("reporters").child(getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mUsername = dataSnapshot.getValue(String.class);
-                username.setText(mUsername);
+                Reporter reporter = dataSnapshot.getValue(Reporter.class);
+                username.setText(reporter.getUsername());
+                cred.setText(reporter.getCred());
+                Log.d(TAG, "username: " + reporter.getUsername());
             }
 
             @Override
@@ -52,20 +55,7 @@ public class ReporterMainActivity extends BaseActivity {
                 Log.w(TAG, "Failed to read value.", databaseError.toException());
             }
         });
-
-        // Get CRED and display in TextView
-        mDatabaseReference.child(getUid()).child("cred").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mCred = dataSnapshot.getValue(Integer.class).toString();
-                cred.setText(mCred);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.w(TAG, "Failed to read value.", databaseError.toException());
-            }
-        });
+        */
 
         Button createReportButton = (Button) findViewById(R.id.button_create_report);
         createReportButton.setOnClickListener(new View.OnClickListener() {

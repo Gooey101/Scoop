@@ -12,12 +12,6 @@ public class Report {
     private String mTitle;
     private String mInfo;
     private Long mMilliseconds;
-    /*
-        long milliseconds = System.currentTimeMillis();
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm");
-        Date resultDate = new Date(milliseconds);
-        Log.d(TAG, sdf.format(resultDate));
-     */
     private ImageUpload mImageUpload;
     private String mReporterKey;
     private String mOrganization;
@@ -38,11 +32,17 @@ public class Report {
 
     public String getTitle() { return mTitle; }
     public String getInformation() { return mInfo; }
-    public Long getDate(){ return mMilliseconds; }
+    public Long getMilliseconds(){ return mMilliseconds; }
     public ImageUpload getImageUpload() { return mImageUpload; }
     public String getReporterKey() { return mReporterKey; }
     public String getOrganization() { return mOrganization; }
 
+    public String setTitle(String title) { return mTitle = title; }
+    public String setInformation(String information) { return mInfo = information; }
+    public Long setMMilliseconds(Long milliseconds) { return mMilliseconds = milliseconds; }
+    public ImageUpload setImageUpload(ImageUpload imageUpload) { return mImageUpload = imageUpload; }
+    public String setReporterKey(String reporterKey) { return mReporterKey = reporterKey; }
+    public String setOrganization(String organization) { return mOrganization = organization; }
 
     @Exclude
     public Map<String, Object> toMap() {
