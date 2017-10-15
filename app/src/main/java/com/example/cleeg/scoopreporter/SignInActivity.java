@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.cleeg.scoopreporter.models.Reporter;
+import com.example.cleeg.scoopreporter.reporter.ReporterMainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -117,8 +118,8 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         // Write new reporter
         writeNewUser(user.getUid(), username, user.getEmail());
 
-        // Go to MainActivity
-        startActivity(new Intent(SignInActivity.this, MainActivity.class));
+        // Go to ReporterMainActivity
+        startActivity(new Intent(SignInActivity.this, ReporterMainActivity.class));
         finish();
     }
 

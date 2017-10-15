@@ -1,20 +1,21 @@
-package com.example.cleeg.scoopreporter;
+package com.example.cleeg.scoopreporter.reporter;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.cleeg.scoopreporter.BaseActivity;
+import com.example.cleeg.scoopreporter.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends BaseActivity {
+public class ReporterMainActivity extends BaseActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "ReporterMainActivity";
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -22,7 +23,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_reporter_main);
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("reporters");
         mDatabaseReference.child(getUid()).addValueEventListener(new ValueEventListener() {
@@ -41,7 +42,7 @@ public class MainActivity extends BaseActivity {
         createReportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CreateReportActivity.class);
+                Intent intent = new Intent(ReporterMainActivity.this, CreateReportActivity.class);
                 startActivity(intent);
             }
         });
