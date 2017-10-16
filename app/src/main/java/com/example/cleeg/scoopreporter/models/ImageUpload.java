@@ -2,14 +2,17 @@ package com.example.cleeg.scoopreporter.models;
 
 public class ImageUpload {
 
-    public String mName;
-    public String mUrl;
+    private String mPath;
+    private String mUrl;
 
-    public ImageUpload(String name, String url) {
-        mName = name;
+    public ImageUpload() {}
+
+    public ImageUpload(String path, String url) {
+        mPath = path;
         mUrl = url;
     }
 
-    public String getName() { return mName; }
+    public String getPath(){ return mPath; }
     public String getUrl() { return mUrl; }
+
 }

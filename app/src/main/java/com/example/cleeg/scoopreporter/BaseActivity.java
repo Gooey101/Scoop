@@ -3,7 +3,9 @@ package com.example.cleeg.scoopreporter;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 
-public class BaseActivity extends AppCompatActivity{
+import com.google.firebase.auth.FirebaseAuth;
+
+public class BaseActivity extends AppCompatActivity {
 
     private ProgressDialog mProgressDialog;
 
@@ -20,6 +22,10 @@ public class BaseActivity extends AppCompatActivity{
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
+    }
+
+    public String getUid() {
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
 }

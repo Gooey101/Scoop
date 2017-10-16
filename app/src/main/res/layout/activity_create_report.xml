@@ -4,30 +4,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.cleeg.scoopreporter.CreateReportActivity">
+    tools:context="com.example.cleeg.scoopreporter.reporter.CreateReportActivity">
 
-    <Button
-        android:id="@+id/browse_button"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Browse image to upload" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center" />
+        android:text="Text"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/txtImageName"
+        android:id="@+id/field_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Image name" />
+        android:hint="title"
+        android:inputType="textCapWords"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/field_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:hint="info"
+        android:inputType="textCapSentences|textMultiLine" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Media"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <Button
-        android:id="@+id/upload_button"
+        android:id="@+id/button_upload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Upload image" />
+        android:text="Upload Image" />
+
+    <TextView
+        android:id="@+id/image_path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="/happy/to/see/you.jpg" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Organizations"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_org"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/org_ap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ap" />
+
+        <RadioButton
+            android:id="@+id/npr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bbc" />
+
+        <RadioButton
+            android:id="@+id/BBC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="npr" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Submit" />
 
 </LinearLayout>
